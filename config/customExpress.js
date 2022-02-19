@@ -1,3 +1,4 @@
+//Conexões basica do node.js no caso usando express, consign e body-parser
 const express = require('express')
 const consign = require('consign')
 const bodyParser = require('body-parser')
