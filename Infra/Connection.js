@@ -1,3 +1,4 @@
+//configurações do banco my sql
 const mysql = require('mysql')
 
 const connection = mysql.createConnection({

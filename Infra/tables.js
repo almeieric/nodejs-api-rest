@@ -1,3 +1,4 @@
+//criação das tableas do banco de dados
 class tables {
     init(connection) {
         console.log('tabelas foram chamadas')
