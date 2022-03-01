@@ -49,7 +49,7 @@ class Atendimento {
                     res.status(400).json(erro)
 
                 } else {
-                    res.status(201).json(resultado)
+                    res.status(201).json(atendimento)
                 }
 
 
@@ -82,6 +82,35 @@ class Atendimento {
                 res.status(200).json(atendimento)
 
             }
+        })
+    }
+    //metodo de alteração do banco
+    altera(id, valores, res) {
+
+        if (valores.data) {
+            valores.data = moment(valores.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS')
+        }
+        const sql = 'UPDATE Atendimentos SET ? WHERE id=?'
+        connection.query(sql, [valores, id], (erro, resultado) => {
+            if (erro) {
+                res.status(400).json(erro)
+            } else {
+                res.status(200).json({...valores,id})
+            }
+        })
+
+
+    }
+    // metodo deleta para remorção de itens do banco
+    deleta(id, res) {
+        const sql = 'DELETE FROM Atendimentos WHERE id=?'
+        connection.query(sql, id, (erro, resultado) => {
+            if(erro){
+                res.status(400).json(erro)
+            }else{
+                res.status(200).json({id})
+            }
+
         })
     }
 }

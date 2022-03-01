@@ -22,4 +22,18 @@ module.exports = app => {
         Atendimento.adiciona(atendimento, res)
 
     })
+    //patch para realizar updates no programa
+    app.patch('/atendimentos/:id', (req,res) => {
+        const id = parseInt(req.params.id)
+        const valores = req.body
+
+        Atendimento.altera(id, valores, res)
+
+    })
+    //delete para deletar um item do banco 
+    app.delete('/atendimentos/:id', (req,res) => {
+        const id = parseInt(req.params.id)
+
+        Atendimento.deleta(id, res)
+    })
 }
